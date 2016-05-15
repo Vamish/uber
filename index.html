@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+<title>寻找UBER COOL高校</title>
+<script src="js/jquery.min.js"></script>
+<style>
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    width: 100%;
+    font-family: 'MICROSOFT YAHEI', sans-serif;
+}
+
+.container {
+    width: 100%;
+    background: url("img/bg.png") repeat;
+    background-size: 35%;
+}
+
+.container .rule {
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.container .share {
+    position: relative;
+    top: 40px;
+    color: white;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.container .logo {
+    height: 300px;
+    position: relative;
+    top: 30px;
+}
+
+.container .music #music_icon {
+    background: url("css/normalmusic.svg") no-repeat;
+    background-size: 100%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+#music_icon.playing {
+    animation-name: rotate;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+.container .logo img {
+    width: 170px;
+    pointer-events: none;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    display: block;
+}
+
+.container .logo .shadow {
+    animation-name: breath;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+.container .logo .paihangbang {
+    width: 40px;
+    position: relative;
+    left: 105px;
+    top: 160px;
+}
+
+.text-center {
+    text-align: center !important;
+    padding-bottom: 60px;
+}
+
+@keyframes breath {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .4;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.container .rank-board {
+    margin-top: 60px;
+}
+
+.container .rank-board .board {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.container .rank-board .board img {
+    width: 100%;
+    pointer-events: none
+}
+
+.container .rank-board .board span {
+    color: white;
+    position: absolute;
+}
+
+.container .rank-board .board .school {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.container .rank-board .board-1 img {
+    animation-name: flash;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
+
+.container .rank-board .board-1 span.school {
+    top: 0;
+    line-height: 55px;
+    color: #DE5E60;
+    text-shadow: 0 0 10px #DE5E60;
+}
+
+.container .rank-board .board-2 span.school {
+    top: 0;
+    line-height: 98px;
+    color: #EAD477;
+    text-shadow: 0 0 10px #EAD477;
+}
+
+.container .rank-board .board-3 span.school {
+    top: 0;
+    line-height: 115px;
+    color: #EAD477;
+    text-shadow: 0 0 10px #EAD477;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1;
+    }
+    65% {
+        opacity: 1;
+    }
+    70% {
+        opacity: .6;
+    }
+    75% {
+        opacity: 1;
+    }
+    85% {
+        opacity: .6;
+    }
+    95% {
+        opacity: 1;
+    }
+}
+
+.ranking-hint {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+.qr-place {
+    position: relative;
+    height: 220px;
+}
+
+.qr-place img.placeholder {
+    position: absolute;
+    width: 200px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    animation-name: flash;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-delay: 400ms;
+    pointer-events: none;
+}
+
+.qr-place #qr-code {
+    position: absolute;
+    width: 160px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 20px;
+    z-index: 9;
+}
+
+.hint {
+    color: white;
+    font-size: 12px;
+    width: 260px;
+    display: block;
+    text-align: center;
+    margin: 0 auto 20px;
+    line-height: 25px;
+    font-weight: 700;
+}
+
+.hint .big {
+    font-size: 20px;
+}
+
+.btn-group {
+    text-align: center;
+}
+
+.btn-group .btn {
+    width: 45%;
+    background: #2e6f9f;
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 4px 0;
+    border-radius: 2px;
+    color: white;
+}
+
+.last {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.uber-logo {
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.rule-popup-window,
+.share-popup-window {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("img/bg.png") repeat;
+    background-size: 35%;
+    display: none;
+}
+
+.rule-popup-window img,
+.share-popup-window img {
+    width: 100%;
+}
+
+.close-btn {
+    width: 36px !important;
+    height: 36px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="rule">活动规则</div>
+    <div class="share">分享有奖</div>
+    <div class="music">
+        <span id="music_icon" class="playing"></span>
+        <audio src="audio/bgm.mp3" autoplay id="bgm"></audio>
+    </div>
+    <div class="logo">
+        <img src="img/logo.png" alt=""/>
+        <img src="img/logo-shadow.png" alt="" class="shadow"/>
+        <img src="img/paihangbang.png" alt="" class="paihangbang"/>
+    </div>
+    <div class="rank-board">
+        <div class="board board-1">
+            <img src="img/no1.png" alt=""/>
+            <span class="school">集美大学 / 400票</span>
+        </div>
+        <div class="board board-2">
+            <img src="img/no2.png" alt=""/>
+            <span class="school">集美大学 / 300票</span>
+        </div>
+        <div class="board board-3">
+            <img src="img/no3.png" alt=""/>
+            <span class="school">集美大学 / 200票</span>
+        </div>
+    </div>
+    <div class="hint text-center">每天16:00更新排行榜</div>
+    <img class="ranking-hint" src="img/ranking-hint.png" alt=""/>
+
+    <p class="hint">扫描二维码并成功下载APP即为高校助力3票，并获得首程<span class="big">30元</span>打车券一张。</p>
+
+    <div class="qr-place">
+        <img src="img/qr-placeholder.png" alt="" class="placeholder"/>
+        <img id="qr-code" src="" alt=""/>
+    </div>
+    <p class="hint" id="old_user"></p>
+
+    <div class="btn-group">
+        <div class="btn" data-pic="jida.png" data-old="我爱集大">集美大学</div>
+        <div class="btn" data-pic="chengyi.png" data-old="我爱诚毅">诚毅学院</div>
+    </div>
+    <div class="btn-group">
+        <div class="btn" data-pic="huaqiao.png" data-old="我爱华侨">华侨大学</div>
+        <div class="btn" data-pic="gongyi.png" data-old="我爱厦工艺">福大厦工艺</div>
+    </div>
+    <div class="btn-group">
+        <div class="btn" data-pic="gongxueyuan.png" data-old="我爱工学院">厦门工学院</div>
+        <div class="btn" data-pic="ligong.png" data-old="我爱厦理工">厦门理工</div>
+    </div>
+    <img class="uber-logo" src="img/uber-logo.png" alt=""/>
+</div>
+<div class="rule-popup-window">
+    <img class="close-btn" src="img/close-btn.png" alt=""/>
+    <img src="img/rule.png" alt=""/>
+</div>
+<div class="share-popup-window">
+    <img class="close-btn" src="img/close-btn.png" alt=""/>
+    <img src="img/share.png" alt=""/>
+</div>
+<script>
+    $('.btn').click(function () {
+        $('#qr-code').attr('src', 'img/qr/' + $(this).attr('data-pic'));
+
+        var oldUserHint = '老用户在APP“优惠”中输入<span class=big>' +
+                $(this).attr('data-old') +
+                '</span><br>即为高校助力1票';
+
+        $('#old_user').html(oldUserHint);
+    });
+
+    $('.rule').click(function () {
+        $('.rule-popup-window').toggle();
+    });
+
+    $('.share').click(function () {
+        $('.share-popup-window').toggle();
+    });
+
+    $('.close-btn').click(function () {
+        $(this).parent().hide();
+    });
+
+    $('#music_icon').click(function () {
+        $(this).toggleClass('playing');
+        var music = $('#bgm');
+        if ($(this).hasClass('playing')) {
+            $(music).attr('src', 'audio/bgm.mp3');
+        } else {
+            $(music).attr('src', '');
+        }
+    });
+</script>
+</body>
+</html>
