@@ -31,10 +31,13 @@ html, body {
 
 .container div.share {
     position: relative;
-    top: 40px;
     color: white;
     font-size: 12px;
     padding: 10px;
+    animation-name: flash;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-delay: 300ms;
 }
 
 .container .logo {
@@ -299,7 +302,6 @@ html, body {
 </head>
 <body>
 <div class="container">
-    <div class="rule">活动规则</div>
     <div class="share">分享有奖</div>
     <div class="music">
         <span id="music_icon" class="playing"></span>
@@ -327,7 +329,7 @@ html, body {
     <div class="hint text-center">
         每天16:00更新排行榜
         <br/>
-        点击 <a class="rule">查看活动规则</a> 与 <a class="share">榜单超级福利</a>
+        <a class="rule">点击 查看活动规则 查看 榜单超级福利</a>
     </div>
     <img class="ranking-hint" src="img/ranking-hint.png" alt=""/>
 
