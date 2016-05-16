@@ -22,14 +22,14 @@ html, body {
     background-size: 35%;
 }
 
-.container .rule {
+.container div.rule {
     position: absolute;
     color: white;
     font-size: 12px;
     padding: 10px;
 }
 
-.container .share {
+.container div.share {
     position: relative;
     top: 40px;
     color: white;
@@ -208,7 +208,8 @@ html, body {
     pointer-events: none;
 }
 
-.qr-place #qr-code {
+.qr-place #qr-code,
+.qr-place #qr-uber {
     position: absolute;
     width: 160px;
     left: 0;
@@ -281,6 +282,19 @@ html, body {
     top: 0;
     right: 0;
 }
+
+.qr-place .hint {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.qr-uber {
+    height: 300px;
+}
+
+.qr-uber #qr-uber {
+    top: 90px;
+}
 </style>
 </head>
 <body>
@@ -310,7 +324,11 @@ html, body {
             <span class="school">集美大学 / 200票</span>
         </div>
     </div>
-    <div class="hint text-center">每天16:00更新排行榜</div>
+    <div class="hint text-center">
+        每天16:00更新排行榜
+        <br/>
+        点击 <a class="rule">查看活动规则</a> 与 <a class="share">榜单超级福利</a>
+    </div>
     <img class="ranking-hint" src="img/ranking-hint.png" alt=""/>
 
     <p class="hint">扫描二维码并成功下载APP即为高校助力3票，并获得首程<span class="big">30元</span>打车券一张。</p>
@@ -333,7 +351,12 @@ html, body {
         <div class="btn" data-pic="gongxueyuan.png" data-old="我爱工学院">厦门工学院</div>
         <div class="btn" data-pic="ligong.png" data-old="我爱厦理工">厦门理工</div>
     </div>
-    <img class="uber-logo" src="img/uber-logo.png" alt=""/>
+
+    <div class="qr-place qr-uber">
+        <p class="hint">长按二维码关注厦门优步官方微信公众号，吃喝住行跨界合作福利满满</p>
+        <img src="img/qr-placeholder.png" alt="" class="placeholder"/>
+        <img id="qr-uber" src="img/uber-qr.jpg" alt=""/>
+    </div>
 </div>
 <div class="rule-popup-window">
     <img class="close-btn" src="img/close-btn.png" alt=""/>
@@ -355,10 +378,12 @@ html, body {
     });
 
     $('.rule').click(function () {
+        $('body').scrollTop(0);
         $('.rule-popup-window').toggle();
     });
 
     $('.share').click(function () {
+        $('body').scrollTop(0);
         $('.share-popup-window').toggle();
     });
 
